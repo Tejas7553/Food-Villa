@@ -1,0 +1,33 @@
+{
+  "name": "namaskarreactjs",
+  "version": "1.0.0",
+  "description": "A learning React Project",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tejas7553/NamaskarReactjs.git"
+  },
+  "author": "Tejas Jadhav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tejas7553/NamaskarReactjs/issues"
+  },
+  "homepage": "https://github.com/Tejas7553/NamaskarReactjs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parce": "^1.2.8",
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions"
+  ]
+}
