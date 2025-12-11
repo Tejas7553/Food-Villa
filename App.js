@@ -6,44 +6,11 @@ import { createRoot } from "react-dom/client";
 //Below is the React element
 const Title = () => (
   <h1 id="titel" key="h1">
-    Namskar React by Babel
+    Food Villa
   </h1>
 );
 
-// Assignment 4- Create a Nested header Element using React.createElement(h1,h2,h3 inside a div with class “title”)
-const nestedHeaders = React.createElement(
-  "div",
-  {className : "title"},
-  [
-    React.createElement(Title, {key: "title-cop"}),
-    React.createElement("h1", {key:"h4"}, "This is h1"),
-    React.createElement("h2", {key:"h2"}, "This is h2"),
-    React.createElement("h3", {key:"h3"}, "This is h3")
-  ]
-)
 
-//Create the same element using JSX
-const nestedHeadersJSX = (
-  <div className="title">
-    <Title />
-    <h1 id="h1">H1 by JSX</h1>
-     <h2 id='h2'>H2 by JSX</h2>
-      <h3 id='h3'>H3 by JSX</h3>
-  </div>
-)
-
-
-// Create a functional component of the same with JSX
-const NestedHeaders = () => {
-  return(
-    <div>
-    {<Title/>} 
-    <h1>This is h1</h1>
-    <h2>This is h1</h2>
-    <h3>This is h1</h3>
-    </div>
-  )
-}
 
 //React Component
 // Functional Component
@@ -58,39 +25,12 @@ const HeaderComponent = () => {
   );
 };
 
-// Assignment 4-
-const Header = () => {
-  return(
-    <div className="header">
-      <div className="logo">
-        <img 
-        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-         alt="logo"
-         />
-       
-      </div>
 
-      <div className="search-bar">
-        <input type="text" placeholder="Search..."/>
-        <button>Find</button>
-      </div>
-
-      <div className="user-icon">
-        <img
-        src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-        alt="user"/>
-
-      </div>
-    </div>
-  )
-}
 
 const root = createRoot(document.getElementById("root"));
-// root.render(<HeaderComponent />);
-// root.render(nestedHeaders);
-// root.render(<NestedHeaders/>);
-// root.render(nestedHeadersJSX);
-root.render(<Header/>);
+root.render(<HeaderComponent />);
+
+
 
 // JavaScript Code :  Manipulating the HTML DOM using Javscript
 /*
