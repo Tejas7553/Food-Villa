@@ -1,54 +1,51 @@
-body {
-    background-color: #d8d5d5;
-}
-
-h1 {
-    color: rgb(255, 98, 0);
-}
 .header {
-  width: 100%;
-  padding: 10px 20px;
-  background: #ffffff;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
+  margin: 10px;
+  border: 1px solid black;
 }
 
-.logo img {
-  width: 50px;
-  cursor: pointer;
+
+
+.logo {
+  width: 75px;
+  height: 75px;
 }
 
-.search-bar {
+.nav-list > ul{
+  list-style-type: none;
   display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
-.search-bar input {
-  padding: 8px 12px;
-  width: 300px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 14px;
+.nav-list > ul > li {
+  
+  padding: 10px;
+  /* display: flex; */
+  
+  /* gap: 10px;
+  padding: 10px 10px; */
+
 }
 
-.search-bar button {
-  padding: 8px 15px;
-  border-radius: 20px;
-  background: #61dafb;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
+
+.card{
+  width: 200px;
+  border: 1px solid black;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+ 
+
 }
 
-.user-icon img {
-  width: 50px;
-  padding: auto;
-  border-radius: 50%;
-  cursor: pointer;
+.card > img{
+  width: 100%;
+}
+
+.restaurant-list{
+  display: flex;
+  flex-wrap: wrap;
+  
+  
 }
