@@ -1,7 +1,8 @@
 import { IMG_CDN_URL } from "../constant";
 
 const RestaurantCard = ({ restaurant }) => {
-  const { cloudinaryImageId, name, cuisines, avgRating } = restaurant.info;
+  console.log(restaurant);
+  const { cloudinaryImageId, name, cuisines, avgRating } = restaurant?.info;
   return (
     <div className="card">
       <img src={IMG_CDN_URL + cloudinaryImageId} />

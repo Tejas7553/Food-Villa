@@ -1,10 +1,11 @@
 import { restarauntList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 function filterData(searchText, filteredRestaurants) {
   const filterData = filteredRestaurants.filter((restaurant) =>
-    restaurant.info.name.includes(searchText)
+    restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase())
   );
 
   return filterData;
@@ -17,6 +18,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    // API call 
     getRestaurants();
   }, []);
 
@@ -31,16 +33,29 @@ const Body = () => {
     //   json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     // );
 
+    //Optional Chaining
     const restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
 
      setAllRestaurants(restaurants);
+     console.log(restaurants);
     setFilteredRestaurants(restaurants);
   }
 
+  // Conditional Rendering
+  // if restaurant is empty => Shimmer UI
+  // if restaurant has data => actual data UI
 
-  return (
-    <                                                >
+  // not render component (Early return)
+  if(!allRestaurants) return null;
+
+  if(filteredRestaurants?. length === 0 )
+    return <h1>No match found!</h1> 
+
+  return allRestaurants.length === 0 ? (
+    <Shimmer/>
+  ) : (
+    <>
       <div className="search-container">
         <input
           type="text"
@@ -64,7 +79,8 @@ const Body = () => {
       <div className="restaurant-list">
         {filteredRestaurants?.map((restaurant) => {
           return (
-            <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />
+            <RestaurantCard key={restaurant?.info?.id} restaurant={restaurant} />
+            // <RestaurantCard key={rest} restaurant={restaurant} />
           );
         })}
       </div>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 //Below is the React element
 const Title = () => (
   <a href="/">
@@ -12,6 +14,8 @@ const Title = () => (
 //React Component
 // Functional Component
 const Header = () => {
+  const [isLoggedIn, setIsLoggIn] = useState(false);
+
   return (
     <div className="header">
       {/* Component Composition */}
@@ -24,6 +28,11 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      {isLoggedIn ? (
+        <button onClick={() => setIsLoggIn(false)}>Logout</button>
+      ) : (
+        <button onClick={() => setIsLoggIn(true)}>Login</button>
+      )}
     </div>
   );
 };
