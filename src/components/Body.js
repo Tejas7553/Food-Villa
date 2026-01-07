@@ -1,9 +1,9 @@
 import { restarauntList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function filterData(searchText, restaurants) {
-  const filterData = restaurants.filter((restaurant) =>
+function filterData(searchText, filteredRestaurants) {
+  const filterData = filteredRestaurants.filter((restaurant) =>
     restaurant.info.name.includes(searchText)
   );
 
@@ -11,12 +11,36 @@ function filterData(searchText, restaurants) {
 }
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState(restarauntList);
+  // const [restaurantList, setRestaurantList] = useState([]);
+   const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  const [searchClicked, setSearchClicked] = useState("false");
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+
+  async function getRestaurants() {
+    console.log("Tejas");
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json);
+    // setFilteredRestaurants(
+    //   json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
+
+    const restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || [];
+
+     setAllRestaurants(restaurants);
+    setFilteredRestaurants(restaurants);
+  }
+
+
   return (
-    <>
+    <                                                >
       <div className="search-container">
         <input
           type="text"
@@ -27,29 +51,18 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
         />
-        <h1>{searchClicked}</h1>
-        <button 
-        onClick={() => {
-            if(searchClicked === "true"){
-            setSearchClicked("false");
-            }else{
-                setSearchClicked("true");
-            }
-        }}>
-            Search
-        </button>
-        {/* <button
+        <button
           className="search-btn"
           onClick={() => {
-            const data = filterData(searchText, restaurants);
-            setRestaurants(data);
+            const data = filterData(searchText, allRestaurants);
+            setFilteredRestaurants(data);
           }}
         >
           Search
-        </button> */}
+        </button>
       </div>
       <div className="restaurant-list">
-        {restaurants.map((restaurant) => {
+        {filteredRestaurants?.map((restaurant) => {
           return (
             <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />
           );
@@ -60,3 +73,20 @@ const Body = () => {
 };
 
 export default Body;
+
+//   const [searchClicked, setSearchClicked] = useState("false");
+{
+  /* <h1>{searchClicked}</h1> */
+}
+{
+  /* <button 
+        onClick={() => {
+            if(searchClicked === "true"){
+            setSearchClicked("false");
+            }else{
+                setSearchClicked("true");
+            }
+        }}>
+            Search
+        </button> */
+}
