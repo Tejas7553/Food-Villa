@@ -2,7 +2,7 @@ import { useState } from "react";
 
 //Below is the React element
 const Title = () => (
-  <a href="/">
+  <a href="/" className="logo-link">
     <img
       className="logo"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"

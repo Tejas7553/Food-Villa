@@ -3,9 +3,19 @@
   justify-content: space-between;
   margin: 10px;
   border: 1px solid black;
+  background-color: #FF3F33;
 }
 
+/* #root{
+  background-color: #FFE6E1;
+} */
+html{
+    background-color: #FFE6E1;
+}
 
+.logo-link{
+  height: 75px;
+}
 
 .logo {
   width: 75px;
@@ -46,6 +56,10 @@
 .restaurant-list{
   display: flex;
   flex-wrap: wrap;
+  padding-left: 20px;
   
-  
+}
+
+.search-container{
+  margin: 10px;
 }
